@@ -1,0 +1,183 @@
+*{padding:0;margin:0;border:0;box-sizing:border-box;outline:none}
+
+body {background-color: #CF604E;}
+
+.main{
+    background-color:#CF604E;
+    width: 60vmin;
+    height: 100vh;
+    position: relative;
+    left: calc(50vw - 30vmin);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.gameBoard{
+    position: relative;
+    background-color:#1e1e3f;
+    width: 60vmin;
+    height: 60vmin;
+    border: 5px white solid;
+    border-radius: 20px;
+    display:grid;
+    grid-template-columns: auto auto auto auto auto auto;
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+    padding: 10px;
+}
+
+.gameOver{
+    background-color:#091434d6;
+    width: 60vmin;
+    height: 60vmin;
+    border: 5px white solid;
+    border-radius: 20px;
+    padding: 10px;
+    position: absolute;
+    bottom: calc((70vh - 60vmin) / 5);
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    animation-name: gameOverAnim;
+    animation-duration: 2s;
+    padding: 10vmin
+}
+
+@keyframes gameOverAnim {
+    0% { background-color:#09143400; }
+    100% { background-color:#091434d6; }
+}
+
+.displayTrue{
+   display: flex;
+}
+
+.card{
+    width: 100%;
+    height: 100%;
+    perspective: 100px;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.cardFront:hover{
+    border: 2px white solid;
+}
+
+.flippedCard{
+    transform: rotateY(180deg);
+}
+
+.cardFront{
+    background-color: #CF604E;
+    border-radius: 10px;
+    border: 2px solid #CF604E;
+}
+
+.cardBack{
+    border: 2px #7676f0 solid;
+    background-color: #7676f0;
+    border-radius: 10px;
+    transform: rotateY(180deg);
+}
+
+.cardBackTrue{
+    border: 2px #7676f0 solid;
+    border-radius: 10px;
+    background-image: url('assets/ship-icon.jpeg');
+    background-size: contain;
+    background-color: #7676f0;
+    transform: rotateY(180deg);
+}
+
+.cardFront, .cardBack , .cardBackTrue{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+
+.score{
+    font-family: newFont;
+    font-size: 40px;
+    font-weight: 500;
+    color: #ffc400;
+    text-align: center;
+    height: 10vh;
+}
+
+.shipFinder{
+    font-family: newFont;
+    font-size: 50px;
+    font-weight: 500;
+    color: #ffc400;
+    text-align: center;
+    height: 10vh;
+}
+
+.gameOverText{
+    font-family: newFont;
+    font-size: 60px;
+    font-weight: 500;
+    color: #ffc400;
+    text-align: center;
+    height: 10vh;
+}
+
+.playAgainButton{
+    font-family: newFont;
+    font-size: 45px;
+    line-height: 50px;
+    font-weight: 500;
+    padding: calc((10vh - 50px) / 2);
+    color: #ffffff;
+    text-align: center;
+    height: 10vh;
+    width: 40vmin;
+    background-color: #CF604E;
+    border-radius: 10px;
+    border: 2px #CF604E solid;
+    text-shadow: 2.8px 5.6px 5.6px hsl(0deg 0% 0% / 0.41);
+    transition: text-shadow 0.2s ease-in-out;
+    box-shadow: 2.8px 5.6px 5.6px hsl(0deg 0% 0% / 0.41);
+}
+
+.playAgainButton:hover{
+    text-shadow: 0px 0px 0px hsl(0deg 0% 0% / 0);
+    transition: text-shadow 0.2s ease-in-out;
+}
+
+.movesLeft{
+    font-family: newFont;
+    font-size: 30px;
+    font-weight: 500;
+    color: #ffffff;
+    text-align: center;
+    height: 10vh;
+}
+
+@media only screen and (max-width: 600px) {
+    .main{
+        left:0px;
+        width: 100vw;
+        height: 100vh;
+    }
+
+    .gameBoard{
+        width: 100vmin;
+        height: 100vmin;
+    }
+
+    .gameOver{
+        width: 100vmin;
+        height: 100vmin;
+        bottom: calc((80vh - 100vmin) / 4)
+    }
+}
+
+@font-face {
+    font-family: newFont;
+    src: url(assets/PermanentMarker-Regular.ttf);
+}
